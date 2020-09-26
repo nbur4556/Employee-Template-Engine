@@ -10,7 +10,7 @@ describe('Engineer', () => {
 });
 
 // Test Engineer.getGithubUsername() method
-describe('Employee getGithubUsername', () => {
+describe('Engineer getGithubUsername', () => {
     it('Should return the githubUsername of the object', () => {
         const testGithubUsername = 'newuser1234'
         const engineer = new Engineer(0, 'name', 'summary', 'email', testGithubUsername);
@@ -19,7 +19,7 @@ describe('Employee getGithubUsername', () => {
 });
 
 // Test Engineer.getRole() method
-describe('Employee getRole', () => {
+describe('Engineer getRole', () => {
     it('Should return the role of the object', () => {
         const engineer = new Engineer(0, 'name', 'summary', 'email', 'git-username');
         expect(engineer.getRole()).toEqual('engineer');
