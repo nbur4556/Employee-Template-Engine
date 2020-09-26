@@ -2,6 +2,11 @@ const Intern = require('../lib/intern.js');
 
 // Test Intern object
 describe('Intern', () => {
+    it('Can instantiate Intern instance', () => {
+        const i = new Intern();
+        expect(typeof (i)).toBe('object');
+    });
+
     // Test for variable type
     it('Creating Intern object should initialize school as a string', () => {
         const i = new Intern(0, 'name', 'summary', 'email', 'school');

@@ -2,6 +2,11 @@ const Manager = require('../lib/manager.js');
 
 // Test Manager object
 describe('Manager', () => {
+    it('Can instantiate Manager instance', () => {
+        const m = new Manager();
+        expect(typeof (m)).toBe('object');
+    });
+
     // Test for variable type
     it('Creating Manager object should initialize officeNumber as a number', () => {
         const m = new Manager(0, 'name', 'summary', 'email', 1);

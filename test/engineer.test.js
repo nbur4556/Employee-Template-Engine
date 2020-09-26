@@ -2,6 +2,11 @@ const Engineer = require('../lib/engineer.js');
 
 // Test Engineer object
 describe('Engineer', () => {
+    it('Can instantiate Engineer instance', () => {
+        const e = new Engineer();
+        expect(typeof (e)).toBe('object');
+    });
+
     // Test for variable type
     it('Creating Engineer object should initialize gitUsername as a string', () => {
         const e = new Engineer(0, 'name', 'summary', 'email', 'git-username');

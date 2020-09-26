@@ -2,6 +2,11 @@ const Employee = require('../lib/employee.js');
 
 // Test Employee object
 describe('Employee', () => {
+    it('Can instantiate Employee instance', () => {
+        const e = new Employee();
+        expect(typeof (e)).toBe('object');
+    });
+
     // Test for variable type
     it('Creating Employee object should initialize id as a number', () => {
         const e = new Employee(0, 'name', 'role', 'summary', 'email');
