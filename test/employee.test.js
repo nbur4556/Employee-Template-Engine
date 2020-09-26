@@ -35,7 +35,7 @@ describe('Employee getId', () => {
     it('Should return the id of the object', () => {
         const testId = 5;
         const employee = new Employee(testId, 'name', 'role', 'summary', 'email');
-        expect(employee.getId()).toEqual(5);
+        expect(employee.getId()).toEqual(testId);
     });
 });
 
@@ -44,7 +44,7 @@ describe('Employee getName', () => {
     it('Should return the name of the object', () => {
         const testName = 'John Doe';
         const employee = new Employee(0, testName, 'role', 'summary', 'email');
-        expect(employee.getName()).toEqual('John Doe');
+        expect(employee.getName()).toEqual(testName);
     });
 });
 
@@ -53,7 +53,7 @@ describe('Employee getRole', () => {
     it('Should return the role of the object', () => {
         const testRole = 'employee';
         const employee = new Employee(0, 'name', testRole, 'summary', 'email');
-        expect(employee.getRole()).toEqual('employee');
+        expect(employee.getRole()).toEqual(testRole);
     });
 });
 
@@ -62,7 +62,7 @@ describe('Employee getSummary', () => {
     it('Should return the summary of the object', () => {
         const testSummary = 'sum';
         const employee = new Employee(0, 'name', 'role', testSummary, 'email');
-        expect(employee.getSummary()).toEqual('sum');
+        expect(employee.getSummary()).toEqual(testSummary);
     });
 });
 
@@ -71,6 +71,6 @@ describe('Employee getEmail', () => {
     it('Should return the email of the object', () => {
         const testEmail = 'johndoe@hotmail.com';
         const employee = new Employee(0, 'name', 'role', 'summary', testEmail);
-        expect(employee.getEmail()).toEqual('johndoe@hotmail.com');
+        expect(employee.getEmail()).toEqual(testEmail);
     });
 });

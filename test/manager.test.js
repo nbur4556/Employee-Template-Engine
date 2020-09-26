@@ -19,7 +19,7 @@ describe('Manager getOfficeNumber', () => {
     it('Should return the school of the object', () => {
         const testOfficeNumber = 3;
         const manager = new Manager(0, 'name', 'summary', 'email', testOfficeNumber);
-        expect(manager.getOfficeNumber()).toEqual(3);
+        expect(manager.getOfficeNumber()).toEqual(testOfficeNumber);
     });
 });
 

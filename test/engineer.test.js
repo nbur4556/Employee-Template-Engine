@@ -19,7 +19,7 @@ describe('Engineer getGithubUsername', () => {
     it('Should return the githubUsername of the object', () => {
         const testGithubUsername = 'newuser1234';
         const engineer = new Engineer(0, 'name', 'summary', 'email', testGithubUsername);
-        expect(engineer.getGithubUsername()).toEqual('newuser1234');
+        expect(engineer.getGithubUsername()).toEqual(testGithubUsername);
     });
 });
 
