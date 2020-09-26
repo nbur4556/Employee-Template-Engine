@@ -3,7 +3,7 @@ const Intern = require('../lib/intern.js');
 // Test Intern object
 describe('Intern', () => {
     // Test for variable type
-    it('Creating Intern object should initialize gitUsername as a string', () => {
+    it('Creating Intern object should initialize school as a string', () => {
         const intern = new Intern(0, 'name', 'summary', 'email', 'school');
         expect(intern.school).toEqual(typeof String);
     });
@@ -12,7 +12,7 @@ describe('Intern', () => {
 // Test Intern.getSchool() method
 describe('Intern getSchool', () => {
     it('Should return the school of the object', () => {
-        const testSchool = 'jr high school'
+        const testSchool = 'jr high school';
         const intern = new Intern(0, 'name', 'summary', 'email', testSchool);
         expect(intern.getSchool()).toEqual('jr high school');
     });
