@@ -4,8 +4,8 @@ const Intern = require('../lib/intern.js');
 describe('Intern', () => {
     // Test for variable type
     it('Creating Intern object should initialize school as a string', () => {
-        const intern = new Intern(0, 'name', 'summary', 'email', 'school');
-        expect(intern.school).toEqual(typeof String);
+        const i = new Intern(0, 'name', 'summary', 'email', 'school');
+        expect(typeof (i.school)).toEqual(String);
     });
 });
 

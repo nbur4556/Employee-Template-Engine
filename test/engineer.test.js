@@ -4,8 +4,8 @@ const Engineer = require('../lib/engineer.js');
 describe('Engineer', () => {
     // Test for variable type
     it('Creating Engineer object should initialize gitUsername as a string', () => {
-        const engineer = new Engineer(0, 'name', 'summary', 'email', 'git-username');
-        expect(engineer.gitUsername).toEqual(typeof String);
+        const e = new Engineer(0, 'name', 'summary', 'email', 'git-username');
+        expect(typeof (e.gitUsername)).toEqual(String);
     });
 });
 

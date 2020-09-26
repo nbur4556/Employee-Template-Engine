@@ -4,8 +4,8 @@ const Manager = require('../lib/manager.js');
 describe('Manager', () => {
     // Test for variable type
     it('Creating Manager object should initialize officeNumber as a number', () => {
-        const manager = new Manager(0, 'name', 'summary', 'email', 1);
-        expect(manager.officeNumber).toEqual(typeof Number);
+        const m = new Manager(0, 'name', 'summary', 'email', 1);
+        expect(typeof (m.officeNumber)).toEqual(Number);
     });
 });
 

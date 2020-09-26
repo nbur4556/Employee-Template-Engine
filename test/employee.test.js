@@ -4,24 +4,24 @@ const Employee = require('../lib/employee.js');
 describe('Employee', () => {
     // Test for variable type
     it('Creating Employee object should initialize id as a number', () => {
-        const employee = new Employee(0, 'name', 'role', 'summary', 'email');
-        expect(employee.id).toEqual(typeof Number);
+        const e = new Employee(0, 'name', 'role', 'summary', 'email');
+        expect(typeof (e.id)).toEqual(Number);
     });
     it('Creating Employee object should initialize name as a string', () => {
-        const employee = new Employee(0, 'name', 'role', 'summary', 'email');
-        expect(employee.name).toEqual(typeof String);
+        const e = new Employee(0, 'name', 'role', 'summary', 'email');
+        expect(typeof (e.name)).toEqual(String);
     });
     it('Creating Employee object should initialize role as a string', () => {
-        const employee = new Employee(0, 'name', 'role', 'summary', 'email');
-        expect(employee.role).toEqual(typeof String);
+        const e = new Employee(0, 'name', 'role', 'summary', 'email');
+        expect(typeof (e.role)).toEqual(String);
     });
     it('Creating Employee object should initialize summary as a string', () => {
-        const employee = new Employee(0, 'name', 'role', 'summary', 'email');
-        expect(employee.summary).toEqual(typeof String);
+        const e = new Employee(0, 'name', 'role', 'summary', 'email');
+        expect(typeof (e.summary)).toEqual(String);
     });
     it('Creating Employee object should initialize email as a string', () => {
-        const employee = new Employee(0, 'name', 'role', 'summary', 'email');
-        expect(employee.email).toEqual(typeof String);
+        const e = new Employee(0, 'name', 'role', 'summary', 'email');
+        expect(typeof (e.email)).toEqual(String);
     });
 });
 
