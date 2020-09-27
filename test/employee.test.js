@@ -10,23 +10,23 @@ describe('Employee', () => {
     // Test for variable type
     it('Creating Employee object should initialize id as a number', () => {
         const e = new Employee(0, 'name', 'role', 'summary', 'email');
-        expect(typeof (e.id)).toEqual(Number);
+        expect(typeof (e.id)).toEqual('number');
     });
     it('Creating Employee object should initialize name as a string', () => {
         const e = new Employee(0, 'name', 'role', 'summary', 'email');
-        expect(typeof (e.name)).toEqual(String);
+        expect(typeof (e.name)).toEqual('string');
     });
     it('Creating Employee object should initialize role as a string', () => {
         const e = new Employee(0, 'name', 'role', 'summary', 'email');
-        expect(typeof (e.role)).toEqual(String);
+        expect(typeof (e.role)).toEqual('string');
     });
     it('Creating Employee object should initialize summary as a string', () => {
         const e = new Employee(0, 'name', 'role', 'summary', 'email');
-        expect(typeof (e.summary)).toEqual(String);
+        expect(typeof (e.summary)).toEqual('string');
     });
     it('Creating Employee object should initialize email as a string', () => {
         const e = new Employee(0, 'name', 'role', 'summary', 'email');
-        expect(typeof (e.email)).toEqual(String);
+        expect(typeof (e.email)).toEqual('string');
     });
 });
 
