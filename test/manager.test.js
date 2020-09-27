@@ -10,7 +10,7 @@ describe('Manager', () => {
     // Test for variable type
     it('Creating Manager object should initialize officeNumber as a number', () => {
         const m = new Manager(0, 'name', 'summary', 'email', 1);
-        expect(typeof (m.officeNumber)).toEqual(Number);
+        expect(typeof (m.officeNumber)).toEqual('number');
     });
 });
 
