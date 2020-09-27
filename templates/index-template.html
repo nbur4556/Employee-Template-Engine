@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Team</title>
+
+        <style>
+            body {
+                margin: 0;
+            }
+
+            header {
+                margin-bottom: 15px;
+                padding: 15px;
+
+                background-color: #0D1317;
+                color: #FAFDFF;
+
+                text-align: center;
+                font-size: 25px;
+                font-family: Verdana, sans-serif;
+                font-weight: bold;
+            }
+
+            ul,
+            li {
+                list-style-type: none;
+                list-style-position: inside;
+                margin: 0;
+                padding: 0;
+            }
+
+            .flex-container {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: space-evenly;
+            }
+
+            .employee-card {
+                margin: 10px;
+                width: 200px;
+                height: 250px;
+
+                background-color: #FAFDFF;
+                border-radius: 3px;
+                box-shadow: 2px 2px 5px #555, -1px -1px 10px #555;
+
+                font-family: Verdana, sans-serif;
+            }
+
+            /* Card Head */
+            .employee-card-header {
+                padding: 5px;
+                background-color: #1950FF;
+                color: #FAFDFF;
+                font-weight: bold;
+            }
+
+            .employee-card-header div {
+                padding: 5px 20px;
+            }
+
+            /* Card Body */
+            .employee-card-body {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+
+                margin: 20px;
+                height: 100px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <header>My Team</header>
+        <article class='flex-container'></article>
+    </body>
+
+</html>
