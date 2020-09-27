@@ -10,7 +10,7 @@ describe('Engineer', () => {
     // Test for variable type
     it('Creating Engineer object should initialize gitUsername as a string', () => {
         const e = new Engineer(0, 'name', 'summary', 'email', 'git-username');
-        expect(typeof (e.gitUsername)).toEqual('string');
+        expect(typeof (e.githubUsername)).toEqual('string');
     });
 });
 
