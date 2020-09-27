@@ -5,15 +5,71 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Team</title>
+
+        <style>
+            header {
+                text-align: center;
+            }
+
+            ul,
+            li {
+                list-style-type: none;
+                list-style-position: inside;
+                margin: 0;
+                padding: 0;
+            }
+
+            .flex-container {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: space-evenly;
+            }
+
+            .employee-card {
+                margin: 5px;
+                border: 1px solid black;
+                width: 200px;
+            }
+
+            /* Card Head */
+            .employee-card-header {
+                background-color: blue;
+                color: white;
+                font-weight: bold;
+            }
+
+            .employee-card-header div {
+                padding: 5px 20px;
+            }
+
+            /* Card Body */
+            .employee-card-body {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+
+                margin: 20px;
+                height: 100px;
+            }
+        </style>
     </head>
 
     <body>
         <header>My Team</header>
 
-        <article>
-            <section class='employee'></section>
-            <section class='employee'></section>
-            <section class='employee'></section>
+        <article class='flex-container'>
+            <section class='employee-card'>
+                <div class='employee-card-header'>
+                    <div>NAME</div>
+                    <div>ROLE</div>
+                </div>
+                <ul class='employee-card-body'>
+                    <li>ID</li>
+                    <li>EMAIL</li>
+                    <li>GITHUB</li>
+                </ul>
+            </section>
         </article>
 
     </body>
