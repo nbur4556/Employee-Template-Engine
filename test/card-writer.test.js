@@ -69,7 +69,7 @@ describe('Card Writer replaceFields', () => {
     });
 
     // Intern Tests
-    const intern = new Intern(0, 'john doe', 'summary', 'email', 'college high');
+    const intern = new Intern(1, 'marry jane', 'summary', 'email', 'college high');
 
     it('Replace fields method with intern object will replace !NAME in template', () => {
         let str = 'Replace !NAME';
@@ -103,7 +103,7 @@ describe('Card Writer replaceFields', () => {
 
         expect(cardWriter.getCardText()).toEqual(res);
     });
-    xit('Replace fields method with intern object will replace !OTHER in template', () => {
+    it('Replace fields method with intern object will replace !OTHER in template', () => {
         let str = 'Replace !OTHER';
         let res = `Replace ${intern.getSchool()}`;
         const cardWriter = new CardWriter(str);
@@ -113,19 +113,46 @@ describe('Card Writer replaceFields', () => {
     });
 
     // Manager Tests
-    xit('Replace fields method with manager object will replace !NAME in template', () => {
+    const manager = new Manager(2, 'bill stuart', 'summary', 'email', 4);
 
+    it('Replace fields method with manager object will replace !NAME in template', () => {
+        let str = 'Replace !NAME';
+        let res = `Replace ${manager.getName()}`;
+        const cardWriter = new CardWriter(str);
+        cardWriter.replaceFields(manager);
+
+        expect(cardWriter.getCardText()).toEqual(res);
     });
-    xit('Replace fields method with manager object will replace !ROLE in template', () => {
+    it('Replace fields method with manager object will replace !ROLE in template', () => {
+        let str = 'Replace !ROLE';
+        let res = `Replace ${manager.getRole()}`;
+        const cardWriter = new CardWriter(str);
+        cardWriter.replaceFields(manager);
 
+        expect(cardWriter.getCardText()).toEqual(res);
     });
-    xit('Replace fields method with manager object will replace !ID in template', () => {
+    it('Replace fields method with manager object will replace !ID in template', () => {
+        let str = 'Replace !ID';
+        let res = `Replace ${manager.getId()}`;
+        const cardWriter = new CardWriter(str);
+        cardWriter.replaceFields(manager);
 
+        expect(cardWriter.getCardText()).toEqual(res);
     });
-    xit('Replace fields method with manager object will replace !EMAIL in template', () => {
+    it('Replace fields method with manager object will replace !EMAIL in template', () => {
+        let str = 'Replace !ID';
+        let res = `Replace ${manager.getId()}`;
+        const cardWriter = new CardWriter(str);
+        cardWriter.replaceFields(manager);
 
+        expect(cardWriter.getCardText()).toEqual(res);
     });
-    xit('Replace fields method with manager object will replace !OTHER in template', () => {
+    it('Replace fields method with manager object will replace !OTHER in template', () => {
+        let str = 'Replace !OTHER';
+        let res = `Replace ${manager.getOfficeNumber()}`;
+        const cardWriter = new CardWriter(str);
+        cardWriter.replaceFields(manager);
 
+        expect(cardWriter.getCardText()).toEqual(res);
     });
 });                                                                                     
