@@ -71,20 +71,45 @@ describe('Card Writer replaceFields', () => {
     // Intern Tests
     const intern = new Intern(0, 'john doe', 'summary', 'email', 'college high');
 
-    xit('Replace fields method with intern object will replace !NAME in template', () => {
+    it('Replace fields method with intern object will replace !NAME in template', () => {
+        let str = 'Replace !NAME';
+        let res = `Replace ${intern.getName()}`;
+        const cardWriter = new CardWriter(str);
+        cardWriter.replaceFields(intern);
 
+        expect(cardWriter.getCardText()).toEqual(res);
     });
-    xit('Replace fields method with intern object will replace !ROLE in template', () => {
+    it('Replace fields method with intern object will replace !ROLE in template', () => {
+        let str = 'Replace !ROLE';
+        let res = `Replace ${intern.getRole()}`;
+        const cardWriter = new CardWriter(str);
+        cardWriter.replaceFields(intern);
 
+        expect(cardWriter.getCardText()).toEqual(res);
     });
-    xit('Replace fields method with intern object will replace !ID in template', () => {
+    it('Replace fields method with intern object will replace !ID in template', () => {
+        let str = 'Replace !ID';
+        let res = `Replace ${intern.getId()}`;
+        const cardWriter = new CardWriter(str);
+        cardWriter.replaceFields(intern);
 
+        expect(cardWriter.getCardText()).toEqual(res);
     });
-    xit('Replace fields method with intern object will replace !EMAIL in template', () => {
+    it('Replace fields method with intern object will replace !EMAIL in template', () => {
+        let str = 'Replace !EMAIL';
+        let res = `Replace ${intern.getEmail()}`;
+        const cardWriter = new CardWriter(str);
+        cardWriter.replaceFields(intern);
 
+        expect(cardWriter.getCardText()).toEqual(res);
     });
     xit('Replace fields method with intern object will replace !OTHER in template', () => {
+        let str = 'Replace !OTHER';
+        let res = `Replace ${intern.getSchool()}`;
+        const cardWriter = new CardWriter(str);
+        cardWriter.replaceFields(intern);
 
+        expect(cardWriter.getCardText()).toEqual(res);
     });
 
     // Manager Tests
