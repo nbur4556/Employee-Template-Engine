@@ -14,3 +14,11 @@ describe("Card Writer", () => {
         expect(cardWriter.template).toEqual(str);
     });
 });
+
+describe('Card Writer getTemplate', () => {
+    it('Get template method returns card writer template', () => {
+        let str = "Testing"
+        cardWriter = new CardWriter(str);
+        expect(cardWriter.getTemplate()).toEqual(str);
+    })
+});
