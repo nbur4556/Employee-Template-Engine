@@ -3,7 +3,7 @@ const Engineer = require('./lib/engineer.js');
 const Intern = require('./lib/intern.js');
 const Manager = require('./lib/manager.js');
 
-let newEmployee;
+let allEmployees = new Array();
 
 inquirer
     .prompt({
@@ -19,7 +19,7 @@ inquirer
     .then(({ role }) => {
         createEmployee(role).then(() => {
             console.log('CONTINUE HERE');
-            console.log(newEmployee);
+            console.log(allEmployees);
         });
     });
 
@@ -54,7 +54,7 @@ async function createEmployee(role) {
             name: 'officeNumber',
             type: 'input'
         });
-        newEmployee = new Manager(id, name, summary, email, officeNumber);
+        allEmployees.push(new Manager(id, name, summary, email, officeNumber));
     }
     else if (role === 'engineer') {
         let { githubUsername } = await inquirer.prompt({
@@ -62,7 +62,7 @@ async function createEmployee(role) {
             name: 'githubUsername',
             type: 'input'
         });
-        newEmployee = new Engineer(id, name, summary, email, githubUsername);
+        allEmployees.push(new Engineer(id, name, summary, email, githubUsername));
     }
     else {
         let { school } = await inquirer.prompt({
@@ -70,6 +70,6 @@ async function createEmployee(role) {
             name: 'school',
             type: 'input'
         });
-        newEmployee = new Intern(id, name, summary, email, school);
+        allEmployees.push(new Intern(id, name, summary, email, school));
     }
 }
