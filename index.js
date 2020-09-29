@@ -103,7 +103,7 @@ function getTemplate() {
 
 // Creates card for each employee using the HTML card template
 function writeCards(template) {
-    cardWriter = new CardWriter(template);
+    const cardWriter = new CardWriter(template);
     let allCardsHTML = '';
 
     for (let i = 0; i < allEmployees.length; i++) {
