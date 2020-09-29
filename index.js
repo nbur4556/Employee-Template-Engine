@@ -98,6 +98,14 @@ async function setupEmployeeData(role) {
 let template;
 function writeCards() {
     cardWriter = new CardWriter(template);
+    let allCardsHTML = '';
+
+    for (let i = 0; i < allEmployees.length; i++) {
+        cardWriter.replaceFields(allEmployees[i]);
+        allCardsHTML += `${cardWriter.getCardText()}\n`;
+    }
+
+    console.log(allCardsHTML);
 }
 
 function setTemplate() {
