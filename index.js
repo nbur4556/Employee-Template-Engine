@@ -5,20 +5,27 @@ const Manager = require('./lib/manager.js');
 
 let newEmployee;
 
-inquirer.prompt({
-    message: 'Select employee role',
-    name: 'role',
-    type: 'list',
-    choices: [
-        'manager',
-        'engineer',
-        'intern'
-    ]
-}).then(({ role }) => {
-    createEmployee(role);
-});
+inquirer
+    .prompt({
+        message: 'Select employee role',
+        name: 'role',
+        type: 'list',
+        choices: [
+            'manager',
+            'engineer',
+            'intern'
+        ]
+    })
+    .then(({ role }) => {
+        createEmployee(role).then(() => {
+            console.log('CONTINUE HERE');
+            console.log(newEmployee);
+        });
+    });
 
+// Get employee information asynchronously and return a promise
 async function createEmployee(role) {
+    // Common employee information
     let { id } = await inquirer.prompt({
         message: 'Enter employee id',
         name: 'id',
@@ -40,6 +47,7 @@ async function createEmployee(role) {
         type: 'input'
     });
 
+    // Unique employee information
     if (role === 'manager') {
         let { officeNumber } = await inquirer.prompt({
             message: 'Enter employee office number',
