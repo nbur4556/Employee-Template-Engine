@@ -27,6 +27,6 @@ describe('Intern getSchool', () => {
 describe('Intern getRole', () => {
     it('Should return the role of the object', () => {
         const intern = new Intern(0, 'name', 'summary', 'email', 'git-username');
-        expect(intern.getRole()).toEqual('intern');
+        expect(intern.getRole()).toEqual('Intern');
     });
 });

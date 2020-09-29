@@ -27,6 +27,6 @@ describe('Engineer getGithubUsername', () => {
 describe('Engineer getRole', () => {
     it('Should return the role of the object', () => {
         const engineer = new Engineer(0, 'name', 'summary', 'email', 'git-username');
-        expect(engineer.getRole()).toEqual('engineer');
+        expect(engineer.getRole()).toEqual('Engineer');
     });
 });

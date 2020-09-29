@@ -27,6 +27,6 @@ describe('Manager getOfficeNumber', () => {
 describe('Manager getRole', () => {
     it('Should return the role of the object', () => {
         const manager = new Manager(0, 'name', 'summary', 'email', 'git-username');
-        expect(manager.getRole()).toEqual('manager');
+        expect(manager.getRole()).toEqual('Manager');
     });
 });
