@@ -5,26 +5,43 @@ const Manager = require('./lib/manager.js');
 
 let allEmployees = new Array();
 
-inquirer
-    .prompt({
-        message: 'Select employee role',
-        name: 'role',
-        type: 'list',
-        choices: [
-            'manager',
-            'engineer',
-            'intern'
-        ]
-    })
-    .then(({ role }) => {
-        createEmployee(role).then(() => {
-            console.log('CONTINUE HERE');
-            console.log(allEmployees);
+function createEmployees() {
+    inquirer
+        .prompt({
+            message: 'Select employee role',
+            name: 'role',
+            type: 'list',
+            choices: [
+                'manager',
+                'engineer',
+                'intern'
+            ]
+        })
+        .then(({ role }) => {
+            setupEmployeeData(role).then(() => {
+                console.log('CONTINUE HERE');
+                console.log(allEmployees);
+
+                inquirer.prompt({
+                    message: 'Do you want to add another employee?',
+                    name: 'repeat',
+                    type: 'list',
+                    choices: [
+                        'yes',
+                        'no'
+                    ]
+                })
+                    .then(({ repeat }) => {
+                        if (repeat == 'yes') {
+                            createEmployees();
+                        }
+                    })
+            });
         });
-    });
+}
 
 // Get employee information asynchronously and return a promise
-async function createEmployee(role) {
+async function setupEmployeeData(role) {
     // Common employee information
     let { id } = await inquirer.prompt({
         message: 'Enter employee id',
@@ -73,3 +90,5 @@ async function createEmployee(role) {
         allEmployees.push(new Intern(id, name, summary, email, school));
     }
 }
+
+createEmployees();
