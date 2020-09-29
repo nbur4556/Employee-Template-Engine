@@ -41,7 +41,8 @@ async function createEmployees() {
     }
     else {
         // Otherwise, write file
-        let cardHTML = writeCards();
+        let template = getTemplate();
+        let cardHTML = writeCards(template);
         writeFile(cardHTML);
     }
 }
@@ -97,9 +98,15 @@ async function setupEmployeeData(role) {
     }
 }
 
-let template;
+// Loads the HTML card template
+function getTemplate() {
+    let template = fs.readFileSync('./templates/card.html', 'utf8');
+
+    return template;
+}
+
 // Creates card for each employee using the HTML card template
-function writeCards() {
+function writeCards(template) {
     cardWriter = new CardWriter(template);
     let allCardsHTML = '';
 
@@ -109,14 +116,6 @@ function writeCards() {
     }
 
     return allCardsHTML;
-}
-
-// Loads the HTML card template
-function setTemplate() {
-    fs.readFile('./templates/card.html', 'utf8', (err, data) => {
-        if (err) throw err;
-        template = data;
-    });
 }
 
 //Writes HTML file with all cards to output
@@ -136,5 +135,4 @@ function writeFile(cardHTML) {
 }
 
 // RUN CODE
-setTemplate();
 createEmployees();
