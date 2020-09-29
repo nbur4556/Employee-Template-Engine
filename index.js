@@ -127,7 +127,11 @@ function writeFile(cardHTML) {
         if (err) throw err;
 
         data = data.replace(replaceKey, cardHTML);
-        console.log(data);
+        fs.writeFile('./output/index.html', data, (err) => {
+            if (err) throw err;
+
+            console.log('Successfully wrote file');
+        });
     });
 }
 
