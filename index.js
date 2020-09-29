@@ -125,7 +125,17 @@ function writeFile(cardHTML) {
     // Adds HTML for employee cards
     indexHTML = indexHTML.replace(replaceKey, cardHTML);
 
-    try { fs.writeFileSync('./output/index.html', indexHTML); }
+    // Create output directory if it does not exist
+    if (!fs.existsSync('./output')) {
+        try { fs.mkdirSync('./output'); }
+        catch (err) { throw err; }
+    }
+
+    // Write index.html to output directory
+    try {
+        fs.writeFileSync('./output/index.html', indexHTML);
+        console.log(`index.html file located in ${__dirname}\\output`);
+    }
     catch (err) { throw err; }
 }
 
