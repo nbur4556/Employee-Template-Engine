@@ -5,39 +5,38 @@ const Manager = require('./lib/manager.js');
 
 let allEmployees = new Array();
 
-function createEmployees() {
-    inquirer
-        .prompt({
-            message: 'Select employee role',
-            name: 'role',
-            type: 'list',
-            choices: [
-                'manager',
-                'engineer',
-                'intern'
-            ]
-        })
-        .then(({ role }) => {
-            setupEmployeeData(role).then(() => {
-                console.log('CONTINUE HERE');
-                console.log(allEmployees);
+// Create a new employee and return a promise
+async function createEmployees() {
+    // Set new employees role
+    let { role } = await inquirer.prompt({
+        message: 'Select employee role',
+        name: 'role',
+        type: 'list',
+        choices: [
+            'manager',
+            'engineer',
+            'intern'
+        ]
+    });
 
-                inquirer.prompt({
-                    message: 'Do you want to add another employee?',
-                    name: 'repeat',
-                    type: 'list',
-                    choices: [
-                        'yes',
-                        'no'
-                    ]
-                })
-                    .then(({ repeat }) => {
-                        if (repeat == 'yes') {
-                            createEmployees();
-                        }
-                    })
-            });
-        });
+    // Prompts for employee data and pushes to allEmployees array
+    await setupEmployeeData(role);
+
+    // Prompt if user wants to add new employee
+    let { repeat } = await inquirer.prompt({
+        message: 'Do you want to add another employee?',
+        name: 'repeat',
+        type: 'list',
+        choices: [
+            'yes',
+            'no'
+        ]
+    });
+
+    // If yes, repeat this function
+    if (repeat == 'yes') {
+        createEmployees();
+    }
 }
 
 // Get employee information asynchronously and return a promise
@@ -91,4 +90,7 @@ async function setupEmployeeData(role) {
     }
 }
 
-createEmployees();
+// RUN CODE
+createEmployees().then(() => {
+    console.log(allEmployees);
+});
