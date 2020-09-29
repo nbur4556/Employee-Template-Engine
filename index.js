@@ -1,7 +1,9 @@
 const inquirer = require('inquirer');
+const fs = require('fs');
 const Engineer = require('./lib/engineer.js');
 const Intern = require('./lib/intern.js');
 const Manager = require('./lib/manager.js');
+const CardWriter = require('./lib/card-writer');
 
 let allEmployees = new Array();
 
@@ -36,6 +38,9 @@ async function createEmployees() {
     // If yes, repeat this function
     if (repeat == 'yes') {
         createEmployees();
+    }
+    else {
+        writeCards();
     }
 }
 
@@ -90,7 +95,18 @@ async function setupEmployeeData(role) {
     }
 }
 
+let template;
+function writeCards() {
+    cardWriter = new CardWriter(template);
+}
+
+function setTemplate() {
+    fs.readFile('./templates/card.html', 'utf8', (err, data) => {
+        if (err) throw err;
+        template = data;
+    });
+}
+
 // RUN CODE
-createEmployees().then(() => {
-    console.log(allEmployees);
-});
+setTemplate();
+createEmployees();
