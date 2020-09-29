@@ -122,16 +122,9 @@ function writeCards(template) {
 function writeFile(cardHTML) {
     const replaceKey = '!ALLCARDS';
 
-    fs.readFile('./templates/index-template.html', 'utf8', (err, data) => {
-        if (err) throw err;
-
-        data = data.replace(replaceKey, cardHTML);
-        fs.writeFile('./output/index.html', data, (err) => {
-            if (err) throw err;
-
-            console.log('Successfully wrote file');
-        });
-    });
+    let indexHTML = fs.readFileSync('./templates/index-template.html', 'utf8');
+    indexHTML = indexHTML.replace(replaceKey, cardHTML);
+    fs.writeFileSync('./output/index.html', indexHTML);
 }
 
 // RUN CODE
