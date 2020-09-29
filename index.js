@@ -7,7 +7,7 @@ const CardWriter = require('./lib/card-writer');
 
 let allEmployees = new Array();
 
-// Create a new employee and return a promise
+// Create a new employee and sends to card writer
 async function createEmployees() {
     // Set new employees role
     let { role } = await inquirer.prompt({
@@ -100,7 +100,10 @@ async function setupEmployeeData(role) {
 
 // Loads the HTML card template
 function getTemplate() {
-    let template = fs.readFileSync('./templates/card.html', 'utf8');
+    let template;
+
+    try { template = fs.readFileSync('./templates/card.html', 'utf8'); }
+    catch (err) { throw err; }
 
     return template;
 }
@@ -121,10 +124,16 @@ function writeCards(template) {
 //Writes HTML file with all cards to output
 function writeFile(cardHTML) {
     const replaceKey = '!ALLCARDS';
+    let indexHTML;
 
-    let indexHTML = fs.readFileSync('./templates/index-template.html', 'utf8');
+    try { indexHTML = fs.readFileSync('./templates/index-template.html', 'utf8'); }
+    catch (err) { throw err; }
+
+    // Adds HTML for employee cards
     indexHTML = indexHTML.replace(replaceKey, cardHTML);
-    fs.writeFileSync('./output/index.html', indexHTML);
+
+    try { fs.writeFileSync('./output/index.html', indexHTML); }
+    catch (err) { throw err; }
 }
 
 // RUN CODE
