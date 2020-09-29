@@ -49,8 +49,15 @@ async function createEmployees() {
 
 // Get employee information asynchronously and return a promise
 async function setupEmployeeData(role) {
+
+    // Set message for role specific data
+    let otherMessage;
+    if (role === 'manager') { otherMessage = 'Enter employee office number'; }
+    else if (role === 'engineer') { otherMessage = 'Enter employee Github username'; }
+    else { otherMessage = 'Enter employee school'; }
+
     // Common employee information
-    let employeeData = await inquirer.prompt([
+    let data = await inquirer.prompt([
         {
             message: 'Enter employee id',
             name: 'id',
@@ -70,34 +77,18 @@ async function setupEmployeeData(role) {
             message: 'Enter employee email',
             name: 'email',
             type: 'input'
+        },
+        {
+            message: otherMessage,
+            name: 'other',
+            type: 'input'
         }
     ]);
 
-    // Unique employee information
-    if (role === 'manager') {
-        let { other } = await inquirer.prompt({
-            message: 'Enter employee office number',
-            name: 'other',
-            type: 'input'
-        });
-        allEmployees.push(new Manager(employeeData.id, employeeData.name, employeeData.summary, employeeData.email, other));
-    }
-    else if (role === 'engineer') {
-        let { other } = await inquirer.prompt({
-            message: 'Enter employee Github username',
-            name: 'other',
-            type: 'input'
-        });
-        allEmployees.push(new Engineer(employeeData.id, employeeData.name, employeeData.summary, employeeData.email, other));
-    }
-    else {
-        let { other } = await inquirer.prompt({
-            message: 'Enter employee school',
-            name: 'other',
-            type: 'input'
-        });
-        allEmployees.push(new Intern(employeeData.id, employeeData.name, employeeData.summary, employeeData.email, other));
-    }
+    // Create role specific employee
+    if (role === 'manager') { allEmployees.push(new Manager(data.id, data.name, data.summary, data.email, data.other)); }
+    else if (role === 'engineer') { allEmployees.push(new Engineer(data.id, data.name, data.summary, data.email, data.other)); }
+    else { allEmployees.push(new Intern(data.id, data.name, data.summary, data.email, data.other)); }
 }
 
 // Loads the HTML card template
