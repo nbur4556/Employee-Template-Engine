@@ -35,12 +35,14 @@ async function createEmployees() {
         ]
     });
 
-    // If yes, repeat this function
     if (repeat == 'yes') {
+        // If yes, repeat this function
         createEmployees();
     }
     else {
-        writeCards();
+        // Otherwise, write file
+        let cardHTML = writeCards();
+        writeFile(cardHTML);
     }
 }
 
@@ -96,6 +98,7 @@ async function setupEmployeeData(role) {
 }
 
 let template;
+// Creates card for each employee using the HTML card template
 function writeCards() {
     cardWriter = new CardWriter(template);
     let allCardsHTML = '';
@@ -105,13 +108,26 @@ function writeCards() {
         allCardsHTML += `${cardWriter.getCardText()}\n`;
     }
 
-    console.log(allCardsHTML);
+    return allCardsHTML;
 }
 
+// Loads the HTML card template
 function setTemplate() {
     fs.readFile('./templates/card.html', 'utf8', (err, data) => {
         if (err) throw err;
         template = data;
+    });
+}
+
+//Writes HTML file with all cards to output
+function writeFile(cardHTML) {
+    const replaceKey = '!ALLCARDS';
+
+    fs.readFile('./templates/index-template.html', 'utf8', (err, data) => {
+        if (err) throw err;
+
+        data = data.replace(replaceKey, cardHTML);
+        console.log(data);
     });
 }
 
