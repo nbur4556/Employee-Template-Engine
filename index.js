@@ -50,51 +50,53 @@ async function createEmployees() {
 // Get employee information asynchronously and return a promise
 async function setupEmployeeData(role) {
     // Common employee information
-    let { id } = await inquirer.prompt({
-        message: 'Enter employee id',
-        name: 'id',
-        type: 'input'
-    });
-    let { name } = await inquirer.prompt({
-        message: 'Enter employee name',
-        name: 'name',
-        type: 'input'
-    });
-    let { summary } = await inquirer.prompt({
-        message: 'Enter employee summary',
-        name: 'summary',
-        type: 'input'
-    });
-    let { email } = await inquirer.prompt({
-        message: 'Enter employee email',
-        name: 'email',
-        type: 'input'
-    });
+    let employeeData = await inquirer.prompt([
+        {
+            message: 'Enter employee id',
+            name: 'id',
+            type: 'input'
+        },
+        {
+            message: 'Enter employee name',
+            name: 'name',
+            type: 'input'
+        },
+        {
+            message: 'Enter employee summary',
+            name: 'summary',
+            type: 'input'
+        },
+        {
+            message: 'Enter employee email',
+            name: 'email',
+            type: 'input'
+        }
+    ]);
 
     // Unique employee information
     if (role === 'manager') {
-        let { officeNumber } = await inquirer.prompt({
+        let { other } = await inquirer.prompt({
             message: 'Enter employee office number',
-            name: 'officeNumber',
+            name: 'other',
             type: 'input'
         });
-        allEmployees.push(new Manager(id, name, summary, email, officeNumber));
+        allEmployees.push(new Manager(employeeData.id, employeeData.name, employeeData.summary, employeeData.email, other));
     }
     else if (role === 'engineer') {
-        let { githubUsername } = await inquirer.prompt({
+        let { other } = await inquirer.prompt({
             message: 'Enter employee Github username',
-            name: 'githubUsername',
+            name: 'other',
             type: 'input'
         });
-        allEmployees.push(new Engineer(id, name, summary, email, githubUsername));
+        allEmployees.push(new Engineer(employeeData.id, employeeData.name, employeeData.summary, employeeData.email, other));
     }
     else {
-        let { school } = await inquirer.prompt({
+        let { other } = await inquirer.prompt({
             message: 'Enter employee school',
-            name: 'school',
+            name: 'other',
             type: 'input'
         });
-        allEmployees.push(new Intern(id, name, summary, email, school));
+        allEmployees.push(new Intern(employeeData.id, employeeData.name, employeeData.summary, employeeData.email, other));
     }
 }
 
